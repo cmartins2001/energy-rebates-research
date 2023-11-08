@@ -9,9 +9,9 @@ import os
 
 
 # Copy dataframe from Excel:
-def make_df_copy(df, min_year=1970):
+def make_df_copy(df, min_year=1997):
     df_copy = df.copy(deep=True)
-    df_copy = df_copy[(df_copy['year'] >= min_year)]    # restrict nrg data to after '70 by default
+    df_copy = df_copy[(df_copy['year'] >= min_year)]    # restrict nrg data to after '97 by default
     return df_copy
 
 
@@ -87,9 +87,9 @@ def make_xl(path, df, file_name):
 def main():
     # Define file names, column names, and directory:
     directory = 'C:/Users/cmart/OneDrive - Bentley University/Senior First/EC 329/Term Project/Automation Inputs'
-    xls = ['auto_ren_nrg', 'auto_co2', 'auto_pop', 'auto_hdd', 'auto_cdd']
+    xls = ['auto_ren_nrg', 'auto_co2', 'auto_exp', 'auto_pop', 'auto_hdd', 'auto_cdd', 'auto_gdp']
     file_names = [os.path.join(directory, f'{name}.xlsx') for name in xls]
-    col_names = ['ren_nrg', 'co2_em', 'population', 'hdd', 'cdd']
+    col_names = ['ren_nrg', 'co2_em', 'exp_per_cap', 'population', 'hdd', 'cdd', 'state_gdp']
 
     # Generate a list of raw dataframes and copies:
     raw_dfs = [pd.read_excel(file) for file in file_names]
