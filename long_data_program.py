@@ -86,7 +86,7 @@ def make_xl(path, df, file_name):
 # The main() function:
 def main():
     # Define file names, column names, and directory:
-    directory = 'C:/Users/cmart/OneDrive - Bentley University/Senior First/EC 329/Term Project/Automation Inputs'
+    directory = '/workspaces/energy-rebates-research/data'
     xls = ['auto_ren_nrg', 'auto_co2', 'auto_exp', 'auto_pop', 'auto_hdd', 'auto_cdd', 'auto_gdp']
     file_names = [os.path.join(directory, f'{name}.xlsx') for name in xls]
     col_names = ['ren_nrg', 'co2_em', 'exp_per_cap', 'population', 'hdd', 'cdd', 'state_gdp']
