@@ -7,6 +7,8 @@ Term Project Data Processing Program
 import pandas as pd
 import os
 
+repo_dir = os.path.dirname(os.path.abspath(__file__))  # Directory of the script
+source_dat_dir = os.path.join(repo_dir, 'data')
 
 # Copy dataframe from Excel:
 def make_df_copy(df, min_year=1997):
@@ -85,10 +87,9 @@ def make_xl(path, df, file_name):
 
 # The main() function:
 def main():
-    # Define file names, column names, and directory:
-    directory = '/workspaces/energy-rebates-research/data'
+    # Define file and column names, and directory:
     xls = ['auto_ren_nrg', 'auto_co2', 'auto_exp', 'auto_pop', 'auto_hdd', 'auto_cdd', 'auto_gdp']
-    file_names = [os.path.join(directory, f'{name}.xlsx') for name in xls]
+    file_names = [os.path.join(source_dat_dir, f'{name}.xlsx') for name in xls]
     col_names = ['ren_nrg', 'co2_em', 'exp_per_cap', 'population', 'hdd', 'cdd', 'state_gdp']
 
     # Generate a list of raw dataframes and copies:
@@ -111,7 +112,7 @@ def main():
     joined_data_final = time_to_treat_var(joined_data, 'year', state_id_var='state')     # see that function for the error
 
     # Export to XL:
-    make_xl(directory, joined_data_final, 'automation_test')
+    make_xl(repo_dir, joined_data_final, 'long_data')
 
 
 if __name__ == '__main__':
